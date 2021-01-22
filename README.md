@@ -3,6 +3,8 @@
 ## Configuration
 - On first startup the container creates the default configuration. Edit to your liking.
     - The server may restart multiple times if the configuration is invalid.
+- The server exposes port 8080. To publish the port to the host interface run with `-P`. To change the port edit the application-prod/dev files. And expose the new port with `-p hostport:newport` or by simply using `-p newport:8080`.
+- Artemis runs in `opt/Artemis` consider this when using relative paths in .yml files.
 
 ## Volumes
 
