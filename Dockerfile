@@ -54,6 +54,7 @@ RUN echo "Installing prerequisites" \
   syslog-ng \
   syslog-ng-core \
   syslog-ng-mod-redis \
+  graphviz \
   && dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')" \
   && wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch" \
   && chmod +x /usr/local/bin/gosu \
