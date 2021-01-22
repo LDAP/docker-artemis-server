@@ -10,7 +10,17 @@
 
 |Volume                    |Description                                    |
 |--------------------------|-----------------------------------------------|
-|`/opt/Artemis/config`     |artemis configuration directory                |
+|`/opt/Artemis/config`     |Artemis configuration directory                |
+|`/opt/Artemis/data`       |Artemis data directory                         |
+
+→ Set the Aartemis data directory in the application-artemis.yml! The Artemis user does not have any permissions outside of `config` and `data`.
+```YAML
+...
+artemis:
+    repo-clone-path: data/repos
+    repo-download-clone-path: data/repos-download
+...
+```
 
 ## Environment variables
 

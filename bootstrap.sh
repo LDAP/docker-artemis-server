@@ -3,7 +3,7 @@
 cd /opt/Artemis
 
 cp -n -a /defaults/Artemis/. config/
-chown -R artemis:artemis config
+chown -R artemis:artemis config data
 
 echo "Starting application..."
 exec gosu artemis java \

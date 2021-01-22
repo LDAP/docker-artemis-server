@@ -65,7 +65,7 @@ COPY syslog-ng.conf /etc/syslog-ng/syslog-ng.conf
 COPY supervisord.conf /etc/supervisor/supervisord.conf
 COPY stop-supervisor.sh /usr/local/sbin/stop-supervisor.sh
 
-RUN mkdir -p /opt/Artemis/config /defaults/Artemis
+RUN mkdir -p /opt/Artemis/config /opt/Artemis/data /defaults/Artemis
 
 COPY --from=build /build/Artemis/build/libs /opt/Artemis
 COPY --from=build /build/Artemis/build/resources/main/config /defaults/Artemis
@@ -76,6 +76,7 @@ RUN chmod +x /bootstrap.sh \
   && useradd -ms /bin/bash artemis
 
 VOLUME ["/opt/Artemis/config"]
+VOLUME ["/opt/Artemis/data"]
 EXPOSE 8080
 
 CMD exec /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
