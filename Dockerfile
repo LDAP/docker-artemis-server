@@ -2,6 +2,9 @@ ARG DEBIAN_FRONTEND=noninteractive
 ARG ARTEMIS_GIT_REPOSITORY=https://github.com/ls1intum/Artemis
 ARG ARTEMIS_VERSION=4.9.0
 
+####################
+# Build stage      #
+####################
 FROM openjdk:15-jdk-buster AS build
 
 ENV LC_ALL C
