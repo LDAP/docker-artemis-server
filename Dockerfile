@@ -59,7 +59,7 @@ RUN echo "Installing prerequisites" \
   && chmod +x /usr/local/bin/gosu \
   && gosu nobody true
 
-COPY ./bootstrap.sh /bootstrap.sh
+COPY bootstrap.sh /bootstrap.sh
 COPY syslog-ng.conf /etc/syslog-ng/syslog-ng.conf
 COPY supervisord.conf /etc/supervisor/supervisord.conf
 COPY stop-supervisor.sh /usr/local/sbin/stop-supervisor.sh
