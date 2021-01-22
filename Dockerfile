@@ -1,6 +1,6 @@
 ARG DEBIAN_FRONTEND=noninteractive
 ARG ARTEMIS_GIT_REPOSITORY=https://github.com/ls1intum/Artemis
-ARG ARTEMIS_VERSION=4.9.0
+ARG ARTEMIS_VERSION=develop
 
 ####################
 # Build stage      #

@@ -34,7 +34,7 @@ artemis:
 
 |Argument                  |Description                                    |
 |--------------------------|-----------------------------------------------|
-|ARTEMIS_VERSION           |Git tag or branch name                         |
+|ARTEMIS_VERSION           |Git tag or branch name, default: develop       |
 
 ### Overwrite execution WAR-file
 To overwrite the used WAR-file mount `/opt/Artemis/Artemis.war` to a custom WAR-file.
