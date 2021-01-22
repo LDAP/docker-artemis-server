@@ -75,5 +75,6 @@ RUN chmod +x /bootstrap.sh \
   && useradd -ms /bin/bash artemis
 
 VOLUME ["/opt/Artemis/config"]
+EXPOSE 8080
 
 CMD exec /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
