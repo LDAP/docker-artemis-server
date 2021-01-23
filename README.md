@@ -13,7 +13,7 @@
 |`/opt/Artemis/config`     |Artemis configuration directory                |
 |`/opt/Artemis/data`       |Artemis data directory                         |
 
-→ Set the Aartemis data directory in the application-artemis.yml! The Artemis user does not have any permissions outside of `config` and `data`.
+→ Set the Artemis data directory in the application-artemis.yml! The Artemis user does not have any permissions outside of `config` and `data`.
 ```YAML
 ...
 artemis:
