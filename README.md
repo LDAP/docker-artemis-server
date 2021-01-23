@@ -24,9 +24,10 @@ artemis:
 
 ## Environment variables
 
-|Variable                  |Default                                        |
-|--------------------------|-----------------------------------------------|
-|PROFILES                  |prod,jenkins,gitlab,artemis,scheduling         |
+|Variable                  |Description                                                                            |
+|--------------------------|---------------------------------------------------------------------------------------|
+|PROFILES                  |Spring profiles. Default: prod,jenkins,gitlab,artemis,scheduling                       |
+|WAIT_FOR                  |Comma separated list of host:port. Server gets started after those ports are available.|
 
 ## Development
 

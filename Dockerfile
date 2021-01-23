@@ -50,6 +50,7 @@ LABEL maintainer "Lucas Alber <lucasd.alber@gmail.com>"
 RUN echo "Installing prerequisites" \
   && apt-get update && apt-get install -y --no-install-recommends \
   supervisor \
+  netcat \
   graphviz \
   && dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')" \
   && wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch" \
