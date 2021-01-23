@@ -49,11 +49,7 @@ LABEL maintainer "Lucas Alber <lucasd.alber@gmail.com>"
 
 RUN echo "Installing prerequisites" \
   && apt-get update && apt-get install -y --no-install-recommends \
-  cron \
   supervisor \
-  syslog-ng \
-  syslog-ng-core \
-  syslog-ng-mod-redis \
   graphviz \
   && dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')" \
   && wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch" \
@@ -61,7 +57,6 @@ RUN echo "Installing prerequisites" \
   && gosu nobody true
 
 COPY bootstrap.sh /bootstrap.sh
-COPY syslog-ng.conf /etc/syslog-ng/syslog-ng.conf
 COPY supervisord.conf /etc/supervisor/supervisord.conf
 COPY stop-supervisor.sh /usr/local/sbin/stop-supervisor.sh
 
