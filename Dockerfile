@@ -13,11 +13,6 @@ RUN echo "Installing prerequisites" \
   && apt-get update && apt-get install -y --no-install-recommends curl \
   && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
   && apt-get update && apt-get install -y --no-install-recommends \
-  cron \
-  supervisor \
-  syslog-ng \
-  syslog-ng-core \
-  syslog-ng-mod-redis \
   git \
   nodejs \
   && npm install --global yarn
@@ -25,15 +20,18 @@ RUN echo "Installing prerequisites" \
 ARG ARTEMIS_VERSION
 ARG ARTEMIS_GIT_REPOSITORY
 
+# Builds the server without client
+# Use ./gradlew -Pprod -Pwar clean bootWar and change .jar to .war 
+# to run the server with client included.
 RUN echo "Building from $ARTEMIS_GIT_REPOSITORY" \
   && mkdir /build && cd /build \
   && git clone --depth 1 --branch $ARTEMIS_VERSION $ARTEMIS_GIT_REPOSITORY \
   && cd Artemis \
-  && ./gradlew -Pprod -Pwar clean bootWar
+  && ./gradlew build -x webpack -x test -x jacocoTestCoverageVerification
 
 RUN cd /build/Artemis \
-  && mv /build/Artemis/build/libs/Artemis-$(./gradlew properties -q | grep "^version:" | awk '{print $2}').war \
-  /build/Artemis/build/libs/Artemis.war
+  && mv /build/Artemis/build/libs/Artemis-$(./gradlew properties -q | grep "^version:" | awk '{print $2}').jar \
+  /build/Artemis/build/libs/Artemis.jar
 
 ####################
 # Execution stage  #
@@ -68,7 +66,7 @@ COPY --from=build /build/Artemis/build/resources/main/config /defaults/Artemis
 
 RUN chmod +x /bootstrap.sh \
   /usr/local/sbin/stop-supervisor.sh \
-  /opt/Artemis/Artemis.war \
+  /opt/Artemis/Artemis.jar \
   && useradd -ms /bin/bash artemis
 
 VOLUME ["/opt/Artemis/config"]
