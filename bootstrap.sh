@@ -7,13 +7,12 @@ chown -R artemis:artemis config data
 
 # Allow waiting for other services
 if [ -n "${WAIT_FOR}" ]; then
-  hosts_ports=$(echo $WAIT_FOR | tr "," "\n" | tr -d "\"")
-  for host_port in $hosts_ports
+  urls=$(echo $WAIT_FOR | tr "," "\n" | tr -d "\"")
+  for url in $urls
   do
-    IFS=':' read -r -a host_port_split <<< "$host_port"
-    until nc -z -w30 ${host_port_split[0]} ${host_port_split[1]}
+    until [[ "$(curl -s -o /dev/null -L -w ''%{http_code}'' $url)" == "200" ]]
     do
-      echo "Waiting for $host_port"
+      echo "Waiting for $url"
       sleep 5
     done
   done

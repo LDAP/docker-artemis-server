@@ -37,10 +37,10 @@ artemis:
 
 ## Environment variables
 
-|Variable                  |Description                                                                            |
-|--------------------------|---------------------------------------------------------------------------------------|
-|PROFILES                  |Spring profiles. Default: prod,jenkins,gitlab,artemis,scheduling                       |
-|WAIT_FOR                  |Comma separated list of host:port. Server gets started after those ports are available.|
+|Variable                  |Description                                                                                                 |
+|--------------------------|------------------------------------------------------------------------------------------------------------|
+|PROFILES                  |Spring profiles. Default: prod,jenkins,gitlab,artemis,scheduling                                            |
+|WAIT_FOR                  |Comma separated list of URLs. Server starts after those report http status code 200 (used for gitlab)       |
 
 ## Building
 
