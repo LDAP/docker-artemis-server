@@ -27,7 +27,7 @@ RUN echo "Building from $ARTEMIS_GIT_REPOSITORY" \
   && mkdir /build && cd /build \
   && git clone --depth 1 --branch $ARTEMIS_VERSION $ARTEMIS_GIT_REPOSITORY \
   && cd Artemis \
-  && ./gradlew build -x webpack -x test -x jacocoTestCoverageVerification
+  && ./gradlew build -x webapp -x test -x jacocoTestCoverageVerification
 
 RUN cd /build/Artemis \
   && mv /build/Artemis/build/libs/Artemis-$(./gradlew properties -q | grep "^version:" | awk '{print $2}').jar \
