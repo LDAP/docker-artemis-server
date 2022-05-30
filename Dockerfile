@@ -36,7 +36,7 @@ RUN cd /build/Artemis \
 ####################
 # Execution stage  #
 ####################
-FROM openjdk:15-jdk-buster
+FROM openjdk:17-jdk-buster
 
 ARG ARTEMIS_VERSION
 ARG GOSU_VERSION=1.12
